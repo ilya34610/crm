@@ -46,7 +46,7 @@ dependencyManagement {
 
 
 tasks.named('test') {
-    useJUnitPlatform()
+    useJUnitPlatform() //использовать JUnitPlatform в качестве пллатформы выполнения тестов
 }
 
 jar {
@@ -54,7 +54,6 @@ jar {
 }
 
 //что сделать чтобы собрать джар файл итоговый
-
 bootJar {
     mainClass = 'ru.phoenixdnr.subscribers.CrmApplication.java'
 
