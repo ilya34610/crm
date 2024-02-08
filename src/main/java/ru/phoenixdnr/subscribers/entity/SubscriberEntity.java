@@ -32,7 +32,7 @@ public class SubscriberEntity {
     @Column(name = "balance")
     private BigDecimal balance;
 
-    @OneToMany
+    @ManyToOne
     private TariffPlanEntity tariffPlan;
 
     @ManyToMany
