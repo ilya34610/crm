@@ -1,10 +1,13 @@
 package ru.phoenixdnr.subscribers.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "tariff_plans")
+@Data
 public class TariffPlanEntity {
     @Id
     @Column(name = "id")

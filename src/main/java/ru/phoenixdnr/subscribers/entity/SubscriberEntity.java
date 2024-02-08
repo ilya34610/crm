@@ -1,5 +1,7 @@
 package ru.phoenixdnr.subscribers.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "subscribers")
+@Data
 public class SubscriberEntity {
 
     @Id
