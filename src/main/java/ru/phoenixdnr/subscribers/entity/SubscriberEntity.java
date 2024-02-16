@@ -33,6 +33,7 @@ public class SubscriberEntity {
     private BigDecimal balance;
 
     @ManyToOne
+    @JoinColumn(name = "id_tariff_plan")
     private TariffPlanEntity tariffPlan;
 
     @ManyToMany
