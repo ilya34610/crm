@@ -2,6 +2,7 @@ package ru.phoenixdnr.subscribers.endpoint;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.phoenixdnr.subscribers.dto.ServiceDto;
 import ru.phoenixdnr.subscribers.entity.ServiceEntity;
 import ru.phoenixdnr.subscribers.service.ServicesService;
 
@@ -28,4 +29,10 @@ public class ServiceEndpoint {
     public void deleteEntityById(@PathVariable int id) {
         service.deleteElemById(id);
     }
+
+    @PutMapping("/{id}")
+    public void putEntityById(@PathVariable Integer id, @RequestBody ServiceDto dto) {
+        service.putEntityById(id, dto);
+    }
+
 }

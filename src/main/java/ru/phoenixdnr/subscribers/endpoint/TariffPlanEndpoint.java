@@ -2,13 +2,14 @@ package ru.phoenixdnr.subscribers.endpoint;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.phoenixdnr.subscribers.dto.TariffPlanDto;
 import ru.phoenixdnr.subscribers.entity.TariffPlanEntity;
 import ru.phoenixdnr.subscribers.service.TariffPlanService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/TariffPlans")
+@RequestMapping("/tariffPlans")
 @RequiredArgsConstructor
 public class TariffPlanEndpoint {
 
@@ -28,4 +29,10 @@ public class TariffPlanEndpoint {
     public void deleteEntityById(@PathVariable int id) {
         service.deleteElemById(id);
     }
+
+    @PutMapping("/{id}")
+    public void putEntityById(@PathVariable int id, @RequestBody TariffPlanDto dto) {
+        service.putEntityById(id, dto);
+    }
+
 }
