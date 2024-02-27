@@ -8,7 +8,7 @@ import ru.phoenixdnr.subscribers.service.TariffPlanService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/TariffPlans")
+@RequestMapping("/tariffPlans")
 @RequiredArgsConstructor
 public class TariffPlanEndpoint {
 
