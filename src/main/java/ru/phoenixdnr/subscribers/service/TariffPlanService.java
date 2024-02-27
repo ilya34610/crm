@@ -1,9 +1,12 @@
 package ru.phoenixdnr.subscribers.service;
 
 import org.springframework.stereotype.Service;
+import ru.phoenixdnr.subscribers.dto.input.TariffPlanInput;
 import ru.phoenixdnr.subscribers.entity.TariffPlanEntity;
+import ru.phoenixdnr.subscribers.mappers.TariffPlanMapper;
 import ru.phoenixdnr.subscribers.repository.TariffPlanRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -11,9 +14,11 @@ import java.util.NoSuchElementException;
 public class TariffPlanService {
 
     private final TariffPlanRepository repository;
+    private final TariffPlanMapper mapper;
 
-    public TariffPlanService(TariffPlanRepository repository) {
+    public TariffPlanService(TariffPlanRepository repository, TariffPlanMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     public List<TariffPlanEntity> getAllElem() {
@@ -27,6 +32,13 @@ public class TariffPlanService {
 
     public void deleteElemById(int id) {
         repository.deleteById(id);
+    }
+
+    public void putEntityById(int id, TariffPlanInput tariffPlanInput) {
+        TariffPlanEntity entity = repository.findById(id)
+                .map(existingEntity -> mapper.fromInput(tariffPlanInput, existingEntity))
+                .orElseThrow(() -> new EntityNotFoundException("Entity not found with id: " + id));
+        repository.save(entity);
     }
 }
 
