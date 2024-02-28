@@ -3,7 +3,7 @@ package ru.phoenixdnr.subscribers.endpoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.phoenixdnr.subscribers.dto.input.ServiceInput;
-import ru.phoenixdnr.subscribers.entity.ServiceEntity;
+import ru.phoenixdnr.subscribers.dto.output.ServiceOutput;
 import ru.phoenixdnr.subscribers.service.ServicesService;
 
 import java.util.List;
@@ -16,12 +16,12 @@ public class ServiceEndpoint {
     private final ServicesService service;
 
     @GetMapping
-    public List<ServiceEntity> getAllEntity() {
+    public List<ServiceOutput> getAllEntity() {
         return service.getAllElem();
     }
 
     @GetMapping("/{id}")
-    public ServiceEntity getEntityById(@PathVariable int id) {
+    public ServiceOutput getEntityById(@PathVariable int id) {
         return service.getElemById(id);
     }
 
@@ -34,5 +34,4 @@ public class ServiceEndpoint {
     public void putEntityById(@PathVariable Integer id, @RequestBody ServiceInput input) {
         service.putEntityById(id, input);
     }
-
 }

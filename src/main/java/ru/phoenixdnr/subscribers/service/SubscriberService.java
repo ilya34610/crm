@@ -2,6 +2,7 @@ package ru.phoenixdnr.subscribers.service;
 
 import org.springframework.stereotype.Service;
 import ru.phoenixdnr.subscribers.dto.input.SubscriberInput;
+import ru.phoenixdnr.subscribers.dto.output.SubscriberOutput;
 import ru.phoenixdnr.subscribers.entity.SubscriberEntity;
 import ru.phoenixdnr.subscribers.mappers.SubscriberMapper;
 import ru.phoenixdnr.subscribers.repository.SubscriberRepository;
@@ -9,6 +10,7 @@ import ru.phoenixdnr.subscribers.repository.SubscriberRepository;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 public class SubscriberService {
@@ -21,12 +23,15 @@ public class SubscriberService {
         this.mapper = mapper;
     }
 
-    public List<SubscriberEntity> getAllElem() {
-        return repository.findAll();
+    public List<SubscriberOutput> getAllElem() {
+        return repository.findAll().stream()
+                .map(mapper::toOutput)
+                .collect(Collectors.toList());
     }
 
-    public SubscriberEntity getElemById(long id) {
+    public SubscriberOutput getElemById(long id) {
         return repository.findById(id)
+                .map(mapper::toOutput)
                 .orElseThrow(() -> new NoSuchElementException("Элемент с id " + id + " не найден"));
     }
 
