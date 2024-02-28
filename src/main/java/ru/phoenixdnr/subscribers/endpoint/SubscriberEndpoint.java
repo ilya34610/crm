@@ -2,6 +2,7 @@ package ru.phoenixdnr.subscribers.endpoint;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.phoenixdnr.subscribers.dto.input.SubscriberInput;
 import ru.phoenixdnr.subscribers.entity.SubscriberEntity;
 import ru.phoenixdnr.subscribers.service.SubscriberService;
 
@@ -28,4 +29,10 @@ public class SubscriberEndpoint {
     public void deleteEntityById(@PathVariable long id) {
         service.deleteElemById(id);
     }
+
+    @PutMapping("/{id}")
+    public void putEntityById(@PathVariable Long id, @RequestBody SubscriberInput input) {
+        service.putEntityById(id, input);
+    }
+
 }

@@ -1,9 +1,12 @@
 package ru.phoenixdnr.subscribers.service;
 
 import org.springframework.stereotype.Service;
+import ru.phoenixdnr.subscribers.dto.input.ServiceInput;
 import ru.phoenixdnr.subscribers.entity.ServiceEntity;
+import ru.phoenixdnr.subscribers.mappers.ServiceMapper;
 import ru.phoenixdnr.subscribers.repository.ServiceRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -11,9 +14,11 @@ import java.util.NoSuchElementException;
 public class ServicesService {
 
     private final ServiceRepository repository;
+    private final ServiceMapper mapper;
 
-    public ServicesService(ServiceRepository repository) {
+    public ServicesService(ServiceRepository repository, ServiceMapper mapper) {
         this.repository = repository; //внедрили зависимость через конструктор
+        this.mapper = mapper;
     }
 
     public List<ServiceEntity> getAllElem() {
@@ -27,5 +32,12 @@ public class ServicesService {
 
     public void deleteElemById(int id) {
         repository.deleteById(id);
+    }
+
+    public void putEntityById(int id, ServiceInput serviceInput) {
+        ServiceEntity entity = repository.findById(id)
+                .map(existingEntity -> mapper.fromInput(serviceInput, existingEntity))
+                .orElseThrow(() -> new EntityNotFoundException("Entity not found with id: " + id));
+        repository.save(entity);
     }
 }
