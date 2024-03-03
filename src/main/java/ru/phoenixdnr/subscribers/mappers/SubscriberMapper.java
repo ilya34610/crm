@@ -28,4 +28,14 @@ public class SubscriberMapper {
                 entity.getBalance(),
                 entity.getTariffPlan());
     }
+
+    public SubscriberEntity fromInput(SubscriberInput subscriberInput) {
+        return new SubscriberEntity(
+                subscriberInput.getFirstName(),
+                subscriberInput.getLastName(),
+                subscriberInput.getPhoneNumber(),
+                subscriberInput.getBirthDate(),
+                subscriberInput.getBalance(),
+                subscriberInput.getTariffPlan());
+    }
 }

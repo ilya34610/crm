@@ -16,4 +16,8 @@ public class ServiceMapper {
     public ServiceOutput toOutput(ServiceEntity entity) {
         return new ServiceOutput(entity.getId(), entity.getName(), entity.getCost());
     }
+
+    public ServiceEntity fromInput(ServiceInput serviceInput) {
+        return new ServiceEntity(serviceInput.getName(), serviceInput.getCost());
+    }
 }

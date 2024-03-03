@@ -34,4 +34,9 @@ public class SubscriberEndpoint {
     public void putEntityById(@PathVariable Long id, @RequestBody SubscriberInput input) {
         service.putEntityById(id, input);
     }
+
+    @PostMapping
+    public void postEntity(@RequestBody SubscriberInput input) {
+        service.postEntity(input);
+    }
 }

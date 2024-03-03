@@ -19,4 +19,9 @@ public class ServiceEntity {
 
     @Column(name = "cost")
     private BigDecimal cost;
+
+    public ServiceEntity(String name, BigDecimal cost) {
+        this.name = name;
+        this.cost = cost;
+    }
 }

@@ -45,6 +45,10 @@ public class TariffPlanService {
                 .orElseThrow(() -> new EntityNotFoundException("Entity not found with id: " + id));
         repository.save(entity);
     }
+
+    public void postEntity(TariffPlanInput tariffPlanInput) {
+        repository.save(mapper.fromInput(tariffPlanInput));
+    }
 }
 
 

@@ -34,4 +34,9 @@ public class TariffPlanEndpoint {
     public void putEntityById(@PathVariable Integer id, @RequestBody TariffPlanInput input) {
         service.putEntityById(id, input);
     }
+
+    @PostMapping
+    public void postEntity(@RequestBody TariffPlanInput input) {
+        service.postEntity(input);
+    }
 }
