@@ -17,4 +17,8 @@ public class TariffPlanMapper {
     public TariffPlanOutput toOutput(TariffPlanEntity entity) {
         return new TariffPlanOutput(entity.getId(), entity.getName(), entity.getCost());
     }
+
+    public TariffPlanEntity fromInput(TariffPlanInput tariffPlanInput) {
+        return new TariffPlanEntity(tariffPlanInput.getName(), tariffPlanInput.getCost());
+    }
 }

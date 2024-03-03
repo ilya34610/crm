@@ -34,4 +34,9 @@ public class ServiceEndpoint {
     public void putEntityById(@PathVariable Integer id, @RequestBody ServiceInput input) {
         service.putEntityById(id, input);
     }
+
+    @PostMapping
+    public void postEntity(@RequestBody ServiceInput input) {
+        service.postEntity(input);
+    }
 }

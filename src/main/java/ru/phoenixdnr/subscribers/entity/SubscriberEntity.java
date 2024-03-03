@@ -43,4 +43,12 @@ public class SubscriberEntity {
     )
     private List<ServiceEntity> services;
 
+    public SubscriberEntity(String firstName, String lastName, String phoneNumber, LocalDate birthDate, BigDecimal balance, TariffPlanEntity tariffPlan) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.birthDate = birthDate;
+        this.balance = balance;
+        this.tariffPlan = tariffPlan;
+    }
 }

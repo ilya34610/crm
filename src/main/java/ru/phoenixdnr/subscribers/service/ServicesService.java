@@ -45,4 +45,8 @@ public class ServicesService {
                 .orElseThrow(() -> new EntityNotFoundException("Entity not found with id: " + id));
         repository.save(entity);
     }
+
+    public void postEntity(ServiceInput serviceInput) {
+        repository.save(mapper.fromInput(serviceInput));
+    }
 }

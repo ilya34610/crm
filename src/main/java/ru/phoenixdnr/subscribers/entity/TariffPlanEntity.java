@@ -19,4 +19,9 @@ public class TariffPlanEntity {
 
     @Column(name = "cost")
     private BigDecimal cost;
+
+    public TariffPlanEntity(String name, BigDecimal cost) {
+        this.name = name;
+        this.cost = cost;
+    }
 }
